@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TCB Logistic Enterprises LLC</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: Inter, Arial, sans-serif;
+    color: #101014;
+    background:
+      radial-gradient(circle at 78% 35%, rgba(126, 43, 211, .055), transparent 25%),
+      radial-gradient(circle at 49% 80%, rgba(255, 211, 91, .045), transparent 25%),
+      #fff;
+    overflow-x: hidden;
+  }
+
+  :root {
+    --purple: #7624c8;
+    --purple-dark: #6418ad;
+    --gold: #d5b84c;
+    --text: #101014;
+    --muted: #64636a;
+    --line: #e9e7ec;
+  }
+
+  .nav {
+    height: 90px;
+    border-bottom: 1px solid #ecebef;
+    background: rgba(255,255,255,.96);
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 5;
+  }
+
+  .nav-inner {
+    width: min(1548px, calc(100% - 48px));
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .brand-img {
+    width: 231px;
+    height: 64px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+  }
+
+  .links {
+    display: flex;
+    align-items: center;
+    gap: 43px;
+    margin-left: auto;
+    margin-right: 122px;
+  }
+
+  .links a {
+    text-decoration: none;
+    color: #47454b;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1.3px;
+    white-space: nowrap;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    position: absolute;
+    right: 0;
+  }
+
+  .phone {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .phone svg { width: 20px; height: 20px; stroke: var(--purple); }
+
+  .appointment {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 16px 25px;
+    border-radius: 28px;
+    color: white;
+    background: linear-gradient(135deg, #8a2bdb, #6c1db8);
+    box-shadow: 0 12px 28px rgba(118,36,200,.23);
+    font-size: 16px;
+    font-weight: 800;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .appointment svg { width: 18px; height: 18px; }
+
+  .hero {
+    width: min(1548px, calc(100% - 48px));
+    margin: 0 auto;
+    min-height: 680px;
+    display: grid;
+    grid-template-columns: 54% 46%;
+    position: relative;
+    padding-top: 42px;
+  }
+
+  .copy {
+    padding-top: 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    height: 36px;
+    padding: 0 15px;
+    border-radius: 20px;
+    background: #f7f5f9;
+    border: 1px solid #ebe7ef;
+    color: #7130a5;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 1.6px;
+  }
+
+  .eyebrow span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  h1 {
+    margin: 31px 0 27px;
+    max-width: 720px;
+    font-size: clamp(58px, 4.35vw, 83px);
+    line-height: .91;
+    letter-spacing: -4.3px;
+    font-weight: 900;
+  }
+
+  h1 .purple { color: var(--purple); }
+
+  .description {
+    max-width: 665px;
+    margin: 0;
+    color: #66656b;
+    font-size: 21px;
+    line-height: 1.7;
+    letter-spacing: -.15px;
+  }
+
+  .actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 36px;
+  }
+
+  .btn {
+    min-width: 270px;
+    height: 61px;
+    border-radius: 32px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    font-size: 17px;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    color: white;
+    background: linear-gradient(135deg, #8527d6, #6b1bb6);
+    box-shadow: 0 13px 25px rgba(118,36,200,.23);
+  }
+
+  .btn-secondary {
+    min-width: 195px;
+    color: #17171b;
+    border: 1px solid #e2e0e5;
+    background: white;
+  }
+
+  .btn svg { width: 19px; height: 19px; }
+
+  .stats {
+    margin-top: 49px;
+    padding-top: 28px;
+    border-top: 1px solid #e9e6eb;
+    display: flex;
+    gap: 70px;
+    max-width: 650px;
+  }
+
+  .stat {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: .3px;
+  }
+
+  .star { color: var(--gold); font-size: 18px; line-height: 1; }
+
+  .visual {
+    position: relative;
+    height: 590px;
+    margin-top: 32px;
+    border-radius: 30px;
+    border: 1px solid #dcc9e9;
+    background:
+      radial-gradient(circle at 53% 29%, rgba(255,255,255,.95), transparent 20%),
+      linear-gradient(160deg, #ead9f7 0%, #f5effa 54%, #fbfafd 100%);
+    box-shadow: inset 0 0 55px rgba(118,36,200,.05);
+    overflow: visible;
+  }
+
+  .visual-logo {
+    width: 190px;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 27px;
+    position: absolute;
+    top: 49px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 10px 20px rgba(0,0,0,.13);
+  }
+
+  .visual-name {
+    position: absolute;
+    top: 271px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    text-align: center;
+    font-weight: 900;
+    font-size: 21px;
+    letter-spacing: -.4px;
+    white-space: nowrap;
+  }
+
+  .visual-sub {
+    position: absolute;
+    top: 309px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    text-align: center;
+    color: #c0a746;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 3px;
+  }
+
+  .ready {
+    position: absolute;
+    top: 348px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border: 1px solid #ece9ee;
+    border-radius: 18px;
+    padding: 8px 17px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    box-shadow: 0 5px 13px rgba(0,0,0,.04);
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .ready-dot { width: 10px; height: 10px; border-radius: 50%; background: #38c98a; }
+
+  .service-card {
+    position: absolute;
+    left: 48px;
+    right: 48px;
+    bottom: 51px;
+    height: 115px;
+    border: 1px solid #e5dfe9;
+    border-radius: 19px;
+    background: rgba(255,255,255,.34);
+    padding: 22px 20px;
+  }
+
+  .service-label {
+    color: #7a25c4;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+  }
+
+  .service-title {
+    margin-top: 9px;
+    font-size: 16px;
+    font-weight: 800;
+  }
+
+  .service-desc {
+    margin-top: 7px;
+    color: #96939a;
+    font-size: 14px;
+  }
+
+  .floating {
+    position: absolute;
+    z-index: 4;
+    background: white;
+    border: 1px solid #ece8ef;
+    box-shadow: 0 13px 27px rgba(26,17,37,.10);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+  }
+
+  .call-card {
+    width: 275px;
+    height: 78px;
+    left: -71px;
+    top: 251px;
+    transform: rotate(-2deg);
+    gap: 13px;
+    padding: 13px 16px;
+  }
+
+  .email-card {
+    width: 300px;
+    height: 75px;
+    right: -17px;
+    bottom: 102px;
+    gap: 13px;
+    padding: 12px 16px;
+  }
+
+  .float-icon {
+    flex: 0 0 43px;
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #f2e7fa;
+  }
+
+  .float-icon svg { width: 22px; height: 22px; stroke: #7b27c5; }
+
+  .float-main { min-width: 0; }
+  .float-title {
+    font-size: 14px;
+    font-weight: 800;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .float-sub {
+    margin-top: 5px;
+    color: #858189;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 1200px) {
+    .links { gap: 22px; margin-right: 260px; }
+    .hero { grid-template-columns: 1fr; }
+    .visual { margin: 50px 40px 0; }
+    .copy { padding-left: 25px; }
+  }
+
+  @media (max-width: 760px) {
+    .nav { height: auto; padding: 12px 0; }
+    .nav-inner { width: calc(100% - 28px); }
+    .brand-img { width: 195px; height: 54px; }
+    .links, .phone { display: none; }
+    .nav-right { position: static; margin-left: auto; }
+    .appointment { padding: 13px 16px; font-size: 13px; }
+    .appointment svg { display: none; }
+
+    .hero {
+      width: calc(100% - 28px);
+      padding-top: 25px;
+      display: block;
+    }
+    .copy { padding-left: 0; }
+    .eyebrow { font-size: 11px; }
+    h1 {
+      font-size: 51px;
+      letter-spacing: -2.8px;
+      margin-top: 25px;
+    }
+    .description { font-size: 17px; line-height: 1.55; }
+    .actions { flex-direction: column; }
+    .btn { width: 100%; }
+    .stats { gap: 20px; flex-wrap: wrap; }
+    .visual { margin: 45px 0 0; height: 500px; }
+    .visual-logo { width: 145px; height: 145px; top: 35px; }
+    .visual-name { top: 207px; font-size: 16px; }
+    .visual-sub { top: 238px; font-size: 9px; }
+    .ready { top: 275px; font-size: 11px; }
+    .service-card { left: 20px; right: 20px; bottom: 28px; }
+    .call-card { left: -5px; top: 285px; transform: scale(.85) rotate(-2deg); transform-origin: left center; }
+    .email-card { right: -5px; bottom: 92px; transform: scale(.8); transform-origin: right center; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#" aria-label="TCB Logistic Enterprises">
+      <img class="brand-img" src="tcb_header_logo.png" alt="TCB Logistic Enterprises LLC">
+    </a>
+
+    <nav class="links">
+      <a href="#services">SERVICES</a>
+      <a href="#specimen">SPECIMEN COLLECTION</a>
+      <a href="#recruitment">RECRUITMENT</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+
+    <div class="nav-right">
+      <div class="phone">
+        <svg fill="none" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2.5 5.8c0-1.1.9-2 2-2h2.1c.9 0 1.7.6 1.9 1.5l.7 3c.2.8-.1 1.6-.8 2.1l-1.4 1a16.1 16.1 0 0 0 6.6 6.6l1-1.4c.5-.7 1.3-1 2.1-.8l3 .7c.9.2 1.5 1 1.5 1.9v2.1c0 1.1-.9 2-2 2C10.9 22.5 1.5 13.1 1.5 4.8c0-.1 0-.2 0-.3z"/>
+        </svg>
+        214-476-1539
+      </div>
+      <a class="appointment" href="#appointment">
+        Book Appointment
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="hero">
+  <section class="copy">
+    <div class="eyebrow"><span></span> DOT CERTIFIED • CDL RECRUITMENT</div>
+
+    <h1>
+      Taking Care of<br>
+      Business. Behind<br>
+      <span class="purple">Every Mile.</span>
+    </h1>
+
+    <p class="description">
+      Plano-based logistics partner providing DOT &amp; Non-DOT
+      specimen collection and CDL driver recruitment — compliant,
+      professional, and built for carriers who need to stay moving.
+    </p>
+
+    <div class="actions">
+      <a class="btn btn-primary" href="#appointment">
+        Schedule Collection
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="4" width="18" height="17" rx="2"/>
+          <path d="M16 2v4M8 2v4M3 9h18"/>
+        </svg>
+      </a>
+      <a class="btn btn-secondary" href="#recruitment">Find CDL Jobs</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><span class="star">★</span><span>CERTIFIED COLLECTOR</span></div>
+      <div class="stat"><span class="star">★</span><span>500+ DRIVERS PLACED</span></div>
+    </div>
+  </section>
+
+  <section class="visual" aria-label="TCB Logistic service preview">
+    <img class="visual-logo" src="tcb_logo.png" alt="TCB Logistic Enterprises logo">
+
+    <div class="visual-name">TCB LOGISTIC ENTERPRISES</div>
+    <div class="visual-sub">PLANO, TX • NATIONWIDE SERVICE</div>
+
+    <div class="ready">
+      <span class="ready-dot"></span>
+      FMCSA Clearinghouse Ready
+    </div>
+
+    <div class="service-card">
+      <div class="service-label">NEXT AVAILABLE</div>
+      <div class="service-title">Today • Mobile Service</div>
+      <div class="service-desc">Chain of custody &amp; rapid results</div>
+    </div>
+
+    <div class="floating call-card">
+      <div class="float-icon">
+        <svg fill="none" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2.5 5.8c0-1.1.9-2 2-2h2.1c.9 0 1.7.6 1.9 1.5l.7 3c.2.8-.1 1.6-.8 2.1l-1.4 1a16.1 16.1 0 0 0 6.6 6.6l1-1.4c.5-.7 1.3-1 2.1-.8l3 .7c.9.2 1.5 1 1.5 1.9v2.1c0 1.1-.9 2-2 2C10.9 22.5 1.5 13.1 1.5 4.8c0-.1 0-.2 0-.3z"/>
+        </svg>
+      </div>
+      <div class="float-main">
+        <div class="float-title">Call 214-476-1539</div>
+        <div class="float-sub">DOT Certified • Fast Response</div>
+      </div>
+    </div>
+
+    <div class="floating email-card">
+      <div class="float-icon">
+        <svg fill="none" viewBox="0 0 24 24" stroke-width="2">
+          <rect x="3" y="5" width="18" height="14" rx="2"/>
+          <path stroke-linecap="round" stroke-linejoin="round" d="m4 7 8 6 8-6"/>
+        </svg>
+      </div>
+      <div class="float-main">
+        <div class="float-title">admin@tcblogisticenterprises.com</div>
+        <div class="float-sub">24h Response • Plano, TX</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section id="services"></section>
+<section id="specimen"></section>
+<section id="recruitment"></section>
+<section id="contact"></section>
+<section id="appointment"></section>
+
+</body>
+</html>
